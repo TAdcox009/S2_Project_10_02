@@ -1,0 +1,162 @@
+/*
+   New Perspectives on HTML and CSS, 7th Edition
+   Tutorial 8
+   Case Problem 2
+
+   Big Apple Physics Animation Styles
+    Author: Todd Adcox Jr
+      Date:  2-2-19   
+
+   Filename: ba_animate.css
+
+*/
+
+
+
+
+/* Transition Styles */
+
+/* 
+ Nav a selector, background image is going to change to ba_target.png, its going to be centered both horizontaly and vertically with no tiling, the background size of the image is set to 0%, the font color to rgb(253, 240, 133), and has a transition that changes the background size over 0.3 seconds and the font color over 0.8 seconds.
+ */
+nav a {
+   background: url(ba_target.png) center no-repeat;
+   background-size: 0%;
+   color: rgb(253, 240, 133);
+   transition: background-size 0.3s color 0.8s;
+}
+
+/* For the nav a:hover selector, the background size is set to 100% and the font color to rgb(244, 130, 130). */
+nav a:hover {
+   background-size: 100%;
+   color: rgb(244, 130, 130);
+}
+
+
+/* Animation Styles */
+
+@keyframes moveRed {
+
+   /* at 0% the red balls position is going to be 0 pixels and have a drop shadow.  */
+   0% {
+      left:0px;
+      filter: drop-shadow(rgb(51, 51, 51) -40px 20px 25px);
+   }
+
+    /* at 49% the red ball is going to collide with the blue ball and the transform is going to make it look like they squish together  */
+   49% {
+      transform: scaleX(1.0);
+   }
+
+    /* at 50% the red balls position is going to be at 380 pixels to the lefft and have a drop shadow.  */
+   50% {
+      left: 380px;
+      filter: drop-shadow(rgb(51, 51, 51) 0px 0px 0px);
+      transform: scaleX(0.4);
+   }
+
+   51% {
+      transform: scaleX(1.0);
+   }
+
+   /* at 100% the red ball is going to be at its original starting position */
+   100% {
+      left: 0px;
+      filter: drop-shadow(rgb(51, 51, 51) -40px 20px 25px);
+   }
+}
+
+@keyframes moveBlue {
+
+   /* at 0% the blue balls position is going to be 0 pixels and have a drop shadow.  */
+   0% {
+      right: 0px;
+      filter: drop-shadow(rgb(51, 51, 51) 40px 20px 25px);
+   }
+
+   /* at 49% the blue ball is going to collide with the red ball and the transform is going to make it look like they squish together  */
+   49% {
+      transform: scaleX(1.0);
+   }
+
+     /* at 50% the blue balls position is going to be at 380 pixels to the right and have a drop shadow.  */
+   50% {
+      right: 380px;
+      filter: drop-shadow(rgb(51, 51, 51) 0px 0px 0px);
+      transform: scaleX(0.4);
+   }
+
+   51% {
+      transform: scaleX(1.0);
+   }
+
+    /* at 100% the blue ball is going to be at its original starting position */
+   100% {
+      right: -700px;
+      filter: drop-shadow( 120px 20px);
+   }
+}
+
+@keyframes showText {
+
+   /* at 0% the text is not going to show as well as at 49% */
+   0% {
+      filter: opacity(0);
+   }
+
+   49% {
+      filter: opacity(0);
+   }
+
+    /* at 51% the text is going to show as well as at 100% */
+   51% {
+      filter: opacity(1);
+   }
+
+   100% {
+      filter: opacity(1);
+   }
+}
+
+@keyframes hideText {
+
+   /* at 0% the text is going to show*/
+   0% {
+      filter: opacity(1)
+   }
+
+   /* at 51% and 100% the text is not going to show */
+   51% {
+      filter: opacity(0);
+   }
+
+   100% {
+      filter: opacity(0);
+   }
+}
+
+/* the image with the id of redBall it is going to apply the animation in the keyframe moveRed for 5 seconds infinitly and have linear timing */
+img#redBall {
+   animation: moveRed 5s infinite;
+   animation-timing-function: linear infinite;
+}
+
+/* the image with the id of blueBall it is going to apply the animation in the keyframe moveBlue for 5 seconds infinitly and have linear timing */
+img#blueBall {
+   animation: moveBlue 5s infinite;
+   animation-timing-function: linear infinite;
+}
+
+/* the divs with the ids of either redSpeed1 or blueSpeed1 it is going to apply the animation in the keyframe hideText for 5 seconds infinitly and have linear timing */
+div#redSpeed1,
+div#blueSpeed1 {
+   animation: hideText 5s infinite;
+   animation-timing-function: linear infinite;
+}
+
+/* the divs with the ids of either redSpeed2 or blueSpeed2 it is going to apply the animation in the keyframe showText for 5 seconds infinitly and have linear timing */
+div#redSpeed2,
+div#blueSpeed2 {
+   animation: showText 5s infinite;
+   animation-timing-function: linear infinite;
+}
